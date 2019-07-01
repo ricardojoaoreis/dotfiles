@@ -9,5 +9,7 @@ if [ "$system_type" = "Darwin" ]; then
     echo "Installing homebrew"
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
+  echo "Updating homebrew bundle"
+  brew bundle --global
 
 fi
