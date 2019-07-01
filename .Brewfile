@@ -17,6 +17,7 @@ brew "tree"
 brew "unzip"
 brew "vegeta"
 brew "watch"
+brew "yadm"
 
 # casks
 cask "beyond-compare"
