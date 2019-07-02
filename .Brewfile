@@ -20,6 +20,7 @@ brew "watch"
 brew "yadm"
 
 # casks
+cask "alacritty"
 cask "beyond-compare"
 cask "bitwarden"
 cask "charles"
