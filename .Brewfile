@@ -2,6 +2,7 @@
 brew "bash"
 brew "curl"
 brew "fish"
+brew "gdub"
 brew "git"
 brew "htop"
 brew "jq"
