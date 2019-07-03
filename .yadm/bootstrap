@@ -12,4 +12,51 @@ if [ "$system_type" = "Darwin" ]; then
   echo "Updating homebrew bundle"
   brew bundle --global
 
+  # Defaults. References: 
+  # https://gist.github.com/MatthewEppelsheimer/2269385
+  # https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh
+
+  # Show the ~/Library folder
+  chflags nohidden ~/Library
+
+  # Avoid creating .DS_Store files on network volumes
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+  # Show indicator lights for open applications in the Dock
+  defaults write com.apple.dock show-process-indicators -bool true
+
+  # Don't rearrange automatically based on most recently used
+  defaults write com.apple.dock mru-spaces -bool false
+
+  # Show hidden files on Finder
+  defaults write com.apple.finder AppleShowAllFiles -bool
+
+  # Disable the warning when changing a file extension
+  defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+  # View as list
+  defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv"
+
+  # Show Path bar in Finder
+  defaults write com.apple.finder ShowPathbar -bool true
+
+  # Show battery percentage
+  defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+
+  # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
+  defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+  # Disable press-and-hold for keys in favor of key repeat
+  defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
+
+  # Show all file extensions
+  defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+  # Disable auto-correct
+  defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+  # Enable snap-to-grid for desktop icons
+  /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
+
 fi
+
