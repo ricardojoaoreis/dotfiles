@@ -1,3 +1,5 @@
+tap "caskroom/versions"
+
 # formula
 brew "bash"
 brew "curl"
@@ -32,6 +34,8 @@ cask "docker"
 cask "firefox"
 cask "google-chrome"
 cask "gpg-suite"
+cask "java"
+cask "java6"
 cask "jetbrains-toolbox"
 cask "keepassxc"
 cask "keybase"
@@ -50,3 +54,5 @@ cask "visual-studio-code"
 cask "visualvm"
 cask "vlc"
 cask "whatsapp"
+
+mas "Pixelmator", id: 407963104
