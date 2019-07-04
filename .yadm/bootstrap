@@ -1,5 +1,4 @@
 #!/bin/sh
-
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
@@ -78,6 +77,11 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
     # Add it to keychain
     ssh-add -K ~/.ssh/id_rsa
 fi
+
+# Install osprey
+curl -s -L https://dl.bintray.com/sky-uk/oss-generic/osprey/latest/osprey-latest_linux_amd64.tar.gz -o /tmp/osprey.tar.gz
+mkdir -p "$HOME/.local/bin" && tar -xvf /tmp/osprey.tar.gz -C "$HOME/.local/bin"
+chmod +x "$HOME/.local/bin/osprey"
 
 
 # Setup VS Code extensions
