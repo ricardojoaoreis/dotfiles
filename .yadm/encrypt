@@ -1,6 +1,7 @@
-.ssh/support_rsa
-.ssh/rundeck_rsa
 .docker/*.pem
+.gradle/gradle.properties
 .osprey/config
 .osprey/osprey_ca.crt
-.gradle/gradle.properties
+.m2/settings.xml
+.ssh/support_rsa
+.ssh/rundeck_rsa
