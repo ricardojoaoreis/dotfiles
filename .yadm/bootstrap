@@ -1,10 +1,8 @@
 #!/bin/sh
-set -ex
 
 system_type=$(uname -s)
 
 if [ "$system_type" = "Darwin" ]; then
-
   # install homebrew if it's missing
   if ! command -v brew >/dev/null 2>&1; then
     echo "Installing homebrew"
@@ -20,11 +18,17 @@ if [ "$system_type" = "Darwin" ]; then
   # Show the ~/Library folder
   chflags nohidden ~/Library
 
+  # Set Dark Mode
+  defaults write "Apple Global Domain" AppleInterfaceStyle -string "Dark"
+
   # Avoid creating .DS_Store files on network volumes
   defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
   # Show indicator lights for open applications in the Dock
   defaults write com.apple.dock show-process-indicators -bool true
+
+  # Set dock size
+  defaults write com.apple.dock tilesize -int 51
 
   # Don't rearrange automatically based on most recently used
   defaults write com.apple.dock mru-spaces -bool false
@@ -59,5 +63,33 @@ if [ "$system_type" = "Darwin" ]; then
   # Enable snap-to-grid for desktop icons
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
+  # Restart Dock and Finder
+  for app in "Dock" "Finder"; do
+    killall "${app}" > /dev/null 2>&1
+  done
 fi
 
+
+# Setup ssh key
+if [ ! -f "$HOME/.ssh/id_rsa" ]; then
+    # Generate key
+    ssh-keygen -t rsa -b 4096
+
+    # Add it to keychain
+    ssh-add -K ~/.ssh/id_rsa
+fi
+
+
+# Setup VS Code extensions
+# Shell check
+code --install-extension timonwong.shellcheck
+
+# Line sort
+code --install-extension Tyriar.sort-lines
+
+
+# Change the origin of YADM repo to SSH
+git --git-dir="$HOME/.yadm/repo.git" remote set-url origin git@github.com:ricardojoaoreis/yadm.git
+
+# Configure git signing key
+git config --global user.signingkey D6008E86383C2CC3
