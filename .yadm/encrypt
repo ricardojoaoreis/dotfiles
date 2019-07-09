@@ -1,4 +1,5 @@
 .docker/*.pem
+.docker/daemon.json
 .gradle/gradle.properties
 .osprey/config
 .osprey/osprey_ca.crt
