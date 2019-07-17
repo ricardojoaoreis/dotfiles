@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+target=${1%/}
+
+find "$target" -print0 | while IFS= read -r -d '' file
+do
+  if [ ! -d "${file}" ] ; then
+    echo "$file"
+    python -m json.tool "$file" > "$file.fmt"
+    mv "$file.fmt" "$file"
+  fi
+done

@@ -1,9 +1,8 @@
-tap "caskroom/versions"
-
 # formula
 brew "bash"
 brew "curl"
 brew "fish"
+brew "fzf"
 brew "gdub"
 brew "git"
 brew "htop"
@@ -55,4 +54,5 @@ cask "visualvm"
 cask "vlc"
 cask "whatsapp"
 
+# AppStore
 mas "Pixelmator", id: 407963104

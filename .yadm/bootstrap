@@ -47,12 +47,21 @@ if [ "$system_type" = "Darwin" ]; then
   # Show battery percentage
   defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
+  # Delete text input app
+  defaults delete com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.textinput"
+
+  # Show volume indicator on menu
+  defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -int 1
+
+  # Set menu apps
+  defaults write com.apple.systemuiserver menuExtras -array "/System/Library/CoreServices/Menu Extras/AirPort.menu" "/System/Library/CoreServices/Menu Extras/Battery.menu" "/System/Library/CoreServices/Menu Extras/Bluetooth.menu" "/System/Library/CoreServices/Menu Extras/Clock.menu" "/System/Library/CoreServices/Menu Extras/Displays.menu" "/System/Library/CoreServices/Menu Extras/Volume.menu"
+
   # Enable full keyboard access for all controls (e.g. enable Tab in modal dialogs)
   defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
   # Disable press-and-hold for keys in favor of key repeat
   defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
-
+  
   # Show all file extensions
   defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
@@ -63,7 +72,7 @@ if [ "$system_type" = "Darwin" ]; then
   /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
 
   # Restart Dock and Finder
-  for app in "Dock" "Finder"; do
+  for app in "Dock" "Finder" "SystemUIServer"; do
     killall "${app}" > /dev/null 2>&1
   done
 fi
@@ -79,7 +88,7 @@ if [ ! -f "$HOME/.ssh/id_rsa" ]; then
 fi
 
 # Install osprey
-curl -s -L https://dl.bintray.com/sky-uk/oss-generic/osprey/latest/osprey-latest_linux_amd64.tar.gz -o /tmp/osprey.tar.gz
+curl -s -L https://dl.bintray.com/sky-uk/oss-generic/osprey/latest/osprey-latest_darwin_amd64.tar.gz -o /tmp/osprey.tar.gz
 mkdir -p "$HOME/.local/bin" && tar -xvf /tmp/osprey.tar.gz -C "$HOME/.local/bin"
 chmod +x "$HOME/.local/bin/osprey"
 
