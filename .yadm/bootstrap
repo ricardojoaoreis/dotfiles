@@ -100,6 +100,9 @@ code --install-extension timonwong.shellcheck
 # Line sort
 code --install-extension Tyriar.sort-lines
 
+# Fish IDE
+code --install-extension lunaryorn.fish-ide
+
 
 # Change the origin of YADM repo to SSH
 git --git-dir="$HOME/.yadm/repo.git" remote set-url origin git@github.com:ricardojoaoreis/yadm.git
