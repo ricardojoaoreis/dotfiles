@@ -1,7 +1,7 @@
 [user]
 	signingkey = D6008E86383C2CC3
 [core]
-	excludesfile = /Users/rre11/.gitignore
+	excludesfile = ~/.gitignore
 [diff]
     tool = vscode
 [difftool "vscode"]
