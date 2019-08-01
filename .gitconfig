@@ -1,5 +1,5 @@
 [user]
-	signingkey = D6008E86383C2CC3
+	signingkey = 39CDD2B7CBC54331
 [core]
 	excludesfile = /Users/rre11/.gitignore
 [diff]
