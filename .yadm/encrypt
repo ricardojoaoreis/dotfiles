@@ -4,5 +4,6 @@
 .osprey/config
 .osprey/osprey_ca.crt
 .m2/settings.xml
+.ssh/config
 .ssh/support_rsa
 .ssh/rundeck_rsa
