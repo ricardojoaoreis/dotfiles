@@ -53,6 +53,7 @@ cask "visual-studio-code"
 cask "visualvm"
 cask "vlc"
 cask "whatsapp"
+cask "zulu8"
 
 # AppStore
 mas "Pixelmator", id: 407963104
