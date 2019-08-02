@@ -1,3 +1,7 @@
+# taps
+tap "homebrew/core"
+tap "homebrew/cask"
+
 # formula
 brew "bash"
 brew "curl"
