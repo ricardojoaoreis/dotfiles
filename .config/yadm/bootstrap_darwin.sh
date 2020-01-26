@@ -1,6 +1,15 @@
 #!/bin/sh
 set -e
 
+delete_default()
+{
+  domain=$1
+  key=$2
+  if defaults read "$domain" "$key" 2> /dev/null; then
+    defaults delete "$domain" "$key"
+  fi 
+}
+
 # install homebrew if it's missing
 if ! command -v brew >/dev/null 2>&1; then
     echo "Installing homebrew"
@@ -13,11 +22,6 @@ brew bundle cleanup --global --force
 # Defaults. References: 
 # https://gist.github.com/MatthewEppelsheimer/2269385
 # https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh
-
-# Add fish to /etc/shells file
-sudo grep -qxF '/usr/local/bin/fish' /etc/shells || sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
-# Set fish as the login shell
-chsh -s /usr/local/bin/fish
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
@@ -53,7 +57,7 @@ defaults write com.apple.finder ShowPathbar -bool true
 defaults write com.apple.menuextra.battery ShowPercent -string "YES"
 
 # Delete text input app
-defaults delete com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.textinput"
+delete_default com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.textinput"
 
 # Show volume indicator on menu
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.volume" -int 1

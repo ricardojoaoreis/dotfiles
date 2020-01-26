@@ -1,5 +1,6 @@
 [user]
-	signingkey = 39CDD2B7CBC54331
+    signingkey = 39CDD2B7CBC54331
+    name = Ricardo Reis
 [core]
 	excludesfile = ~/.gitignore
 [diff]
@@ -11,4 +12,4 @@
 [mergetool "vscode"]
     cmd = code --wait $MERGED
 [commit]
-	gpgsign = true
+    gpgsign = true

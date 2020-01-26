@@ -30,5 +30,8 @@ code --install-extension Tyriar.sort-lines
 # Fish IDE
 code --install-extension lunaryorn.fish-ide
 
+# Python
+code --install-extension ms-python.python
+
 # Change the origin of YADM repo to SSH
-git --git-dir="$HOME/.yadm/repo.git" remote set-url origin git@github.com:ricardojoaoreis/yadm.git
+git --git-dir="$HOME/.config/yadm/repo.git" remote set-url origin git@github.com:ricardojoaoreis/yadm.git

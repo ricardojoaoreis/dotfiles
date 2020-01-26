@@ -1,3 +1,7 @@
+# taps
+tap "homebrew/core"
+tap "homebrew/cask"
+
 # formula
 brew "bash"
 brew "curl"
@@ -12,11 +16,11 @@ brew "mas"
 brew "ncdu"
 brew "nmap"
 brew "parallel"
+brew "python"
 brew "ripgrep"
 brew "shellcheck"
 brew "tmux"
 brew "tree"
-brew "unzip"
 brew "vegeta"
 brew "watch"
 brew "yadm"
