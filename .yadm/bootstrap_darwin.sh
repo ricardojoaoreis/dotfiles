@@ -14,6 +14,11 @@ brew bundle cleanup --global --force
 # https://gist.github.com/MatthewEppelsheimer/2269385
 # https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh
 
+# Add fish to /etc/shells file
+sudo grep -qxF '/usr/local/bin/fish' /etc/shells || sudo sh -c "echo '/usr/local/bin/fish' >> /etc/shells"
+# Set fish as the login shell
+chsh -s /usr/local/bin/fish
+
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
